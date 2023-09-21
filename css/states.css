@@ -1,0 +1,193 @@
+.contact-sales-button {
+    background-color: #181818;
+    border: 2px solid #954CED;
+    transition: background-size .5s, color .5s;
+    background-image: radial-gradient(rgb(30, 15, 47), rgb(30, 15, 47));
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 0%;
+}
+
+.contact-sales-button:hover {
+    box-sizing: border-box;
+    height: 59px;
+    top: -1px;
+    background-size: 100% 100%;
+}
+
+
+.contact-sales-button:active {
+    border: 2px solid #A64CED;
+    background-image: radial-gradient(#181818, #181818);
+    background-size: 100% 100%;
+}
+
+.contact-sales-button:disabled {
+    border: 2px solid #B9B9B9;
+    color: #B9B9B9;
+}
+
+.contact-sales-button-light {
+    border: none;
+    background-color: #954CED;
+    color: inherit;
+    background-image: radial-gradient(to bottom left, #181818, #181818);
+    background-position: 0% 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 0%;
+}
+
+.contact-sales-button-light:hover:enabled {
+    box-sizing: border-box;
+    background-size: 100% 100%;
+    height: 57px;
+}
+
+.contact-sales-button-light:active {
+    background-color: #7B31D4;
+    background-image: radial-gradient(#7B31D4, #7B31D4);
+    background-size: 100% 100%;
+}
+
+.contact-sales-button-light:focus {
+    border: 2px solid #BA8BF3;
+}
+
+.contact-sales-button-light:disabled {
+    background-color: #B9B9B9;
+    background-image: radial-gradient(#B9B9B9, #B9B9B9);
+    color: #ffffff;
+    height: 57px;
+    transition: none;
+    cursor: default;
+}
+
+.dark-bg {
+    display: inline;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    background-position: 0% 0%;
+    background-size: 1000% 1000%;
+    z-index: 900;
+}
+
+.contact-sales-form {
+    position: fixed;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 999;
+    border-radius: 20px;
+    background-color: #ffffff;
+}
+
+.actually-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.field-and-label {
+    display: flex;
+    flex-direction: column;
+}
+
+#form-phone-number {
+    background: white url(../img/russian_federation.png) left no-repeat;
+    background-position-x: 16px;
+    padding-left: 40px;
+}
+
+.form-input {
+    border-radius: 14px;
+    padding: 10px 16px;
+    border: 1px solid #F1F1F1;
+    outline: none;
+    font-family: Outfit-regular;
+    font-size: 14px;
+    line-height: 22px;
+    color: #070707;
+}
+
+.form-input:focus {
+    outline: 1px solid #A7A7A7;
+}
+
+.form-input:disabled {
+    border: 1px solid #F1F1F1;
+    outline: none;
+    cursor: default;
+}
+
+.required-input {
+    border: 1px solid #EC1211;
+}
+
+.disabled-label {
+    color: #A7A7A7;
+}
+
+.form-label {
+    font-family: Outfit-500;
+    font-size: 14px;
+    color: #070707;
+}
+
+.red-star {
+    color: #FF6C2D;
+}
+
+.attention-text {
+    color: #000000;
+}
+
+.attention-link {
+    color: #954CED;
+    text-decoration: underline;
+}
+
+.form-error {
+    color: #EC1211;
+    font-family: Outfit-regular;
+    font-size: 12px;
+    line-height: 20px;
+}
+
+#form-error-msg {
+    font-size: 16px;
+    line-height: auto;
+}
+
+.form-success {
+    background-color: #ffffff;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    padding: 40px;
+}
+
+.success-text {
+    font-family: Outfit-regular;
+    line-height: 120%;
+    color: #444444;
+    text-align: center;
+}
+
+.success-header {
+    font-family: Outfit-600;
+    color: #A64CED;
+}
+
+.success-button {
+    width: 100%;
+}
+
+.exit-icon {
+    cursor: pointer;
+}

@@ -1,0 +1,59 @@
+.div-img {
+    padding: 2px;
+    width: auto;
+    background-color: antiquewhite;
+}
+
+.slick-container {
+    width: 260px;
+    height: 132px;
+    background-color: antiquewhite;
+    overflow: hidden;
+}
+
+.slick-outer-block {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.slick-inner-block {
+    display: flex;
+    flex-direction: row;
+}
+
+#slick-dots {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 1440px;
+}
+
+#slick {
+    display: flex;
+    flex-direction: row;
+    position: relative;
+}
+
+
+#slick-dots {
+    display: flex;
+    flex-direction: row;
+}
+
+.slick-dot {
+    width: 5px;
+    height: 5px;
+    background-color: black;
+    cursor: pointer;
+}
+
+.slick-current-dot {
+    width: 7px;
+    height: 7px;
+    background-color: gray;
+}

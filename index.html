@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<!-- python -m http.server -->
+<html lang="en" id="html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Budss</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body id="body">
+    <div class="dark-bg" id="form-dark-bg">
+        <form action="#" class="contact-sales-form" id="contact-sales-form" onsubmit="can_be_submitted(this)">
+            <img src="img/exit_icon.png" alt="Exit" class="exit-icon" id="form-exit" onclick="close_popup()">
+            <div class="actually-form">
+                <div class="field-and-label">
+                    <label class="form-label" for="form-name">Name <span class="red-star">*</span></label>
+                    <input class="form-input" type="text" id="form-name" placeholder="Enter name" required oninput="check_for_field_fullness()">
+                    <p class="form-error" id="name-error"></p>
+                </div>
+                <div class="field-and-label">
+                    <label class="form-label" for="form-email">Email <span class="red-star">*</span></label>
+                    <input class="form-input" type="text" id="form-email" placeholder="Enter email" required oninput="check_for_field_fullness()">
+                    <p class="form-error" id="email-error"></p>
+                </div>
+                <div class="field-and-label">
+                    <label class="form-label" for="form-phone-number">Phone number <span class="red-star">*</span></label>
+                    <input class="form-input" type="text" id="form-phone-number" pattern="^\+[0-9]\s[0-9]{3}\s[0-9]{3}\s[0-9]{2}\s[0-9]{2}$" placeholder="+7 900 000 00 00" required oninput="phone_input()" onclick="phone_entry()" maxlength="16">
+                    <p class="form-error" id="phone-number-error"></p>
+                </div>
+                <div class="field-and-label">
+                    <label class="form-label" for="form-company">Company</label>
+                    <input class="form-input" type="text" id="form-company" placeholder="Enter company">
+                </div>
+                <div class="field-and-label">
+                    <label class="form-label" for="form-website">Website/Store URL</label>
+                    <input class="form-input" type="text" id="form-website" placeholder="Enter Website/Store URL">
+                </div>
+            </div>
+            <p class="form-error" id="form-error-msg"></p>
+            <p class="attention-text">By submitting this form you are agreeing to Budss's <a href="" class="attention-link">Privacy Policy</a> and <a href="" class="attention-link">Terms of Use</a></p>
+            <button class="contact-sales-button contact-sales-button-light form-button" id="form-button" type="submit" onclick="can_be_submitted(this)" disabled>Contact sales</button>
+        </form>
+        <div class="form-success" id="form-success">
+            <img src="img/exit_icon.png" alt="Exit" class="exit-icon" id="success-exit" onclick="close_popup()">
+            <img src="img/success_img.png" alt="Success!" class="success-img">
+            <h2 class="success-header">Thank you!</h2>
+            <p class="success-text">Thank you, we have received your application and will contact you soon!</p>
+            <button class="contact-sales-button-light contact-sales-button success-button" id="success-button" onclick="close_popup()">Super!</button>
+        </div>
+    </div>
+    <div class="mobile-menu" id="mobile-menu">
+        <img src="img/mobile_menu_exit_img.png" alt="Close" class="mobile-menu-close" onclick="close_popup()">
+        <div class="mobile-menu-items">
+            <a href="" class="mobile-footer-link">For Business</a>
+            <a href="" class="mobile-footer-link">For Customers</a>
+            <a href="" class="mobile-footer-link">Privacy Policy</a>
+            <a href="" class="mobile-footer-link">Terms Of Use - Seller</a>
+            <a href="" class="mobile-footer-link">Terms Of Use - Sellers & Customers</a>
+        </div>
+    </div>
+    <!-- Самый верхний "раздел" -->
+    <div class="container topmost-container">
+        <header class="header">
+            <div class="navigation-panel">
+                <div class="link-container">
+                    <a class="navigation-link inactive-link">For Business</a>
+                    <a class="navigation-link active-link">For Customers</a>
+                </div>
+            </div>
+            <!-- Включил панель навигации и лого с кнопкой Contact Sales в header: я уверен, что в разделе For Customers лого с кнопкой появлялись бы на том же месте -->
+            <div class="container header-container" id="fixed-header">
+                <img class="header-logo" src="img/budss_logo_img.png" alt="Logo" width="155" height="49">
+                <button class="contact-sales-button" id="top-contact-sales-button" onclick="button_click(true)">Contact sales</button>
+            </div>
+        </header>
+
+        <!-- Часть с "Everyone is an Influencer" -->
+        <img class="first-block-img" src="img/first_block_img.png" alt="Girl with sunglasses" width="595" height="529">
+        <div class="container motto-container">
+            <div class="motto-and-description-container">
+                <h1 class="custom-h1" id="header-eiai">Everyone is an Influencer</h1>
+                <p class="motto-description">
+                    Budss is a payments as a service and WOM engine dedicated to acquisition and retention of customers to your business.
+                </p>
+            </div>
+            <button class="contact-sales-button eiai-button" id="contact-sales-in-description" onclick="button_click(true)">Contact sales</button>
+        </div>
+    </div>
+
+    <div class="blank-space"></div>
+
+    <!-- Раздел "About Budss" -->
+    <div class="container about-budss-container" id="about-budss-container">
+        <!-- Очень похоже на то, что нужно использовать два заголовка h1 на странице -->
+        <div class="about-budss-block">
+            <h1 class="about-budss-header custom-h1">About Budss</h1>
+            <div class="container headerless-text-container">
+                <img class="violet-ellipse-behind-text" src="img/purple_background_img.png" alt="Purple BG for text" width="355" height="45">
+                <p class="headerless-text">Payment as a service, powered seamlessly by our network of shoppers</p>
+            </div>
+        </div>
+
+        <div class="features-block">
+            <div id="contactless-feature" class="feature">
+                <img class="feature-img" src="img/star_img.png" alt="Star" width="100" height="100">
+                <div class="feature-text-container">
+                    <h2 class="feature-header">Contactless</h2>
+                    <p class="feature-text" id="contactless-text">Budss uses near field communication (NFC) for making contactless payments.</p>
+                </div>
+            </div>
+
+            <div id="increased-buying-power-feature" class="feature">
+                <img class="feature-img" src="img/helix_img.png" alt="Helix" width="100" height="100">
+                <div class="feature-text-container">
+                    <h2 class="feature-header" id="increased-buying-power-header">Increased Buying Power</h2>
+                    <p class="feature-text">Returning customers spend up to 3X more.</p>
+                </div>
+            </div>
+
+            <div id="analytics-and-insights-feature" class="feature">
+                <img class="feature-img" src="img/zigzag_img.png" alt="Zigzag" width="100" height="100">
+                <div class="feature-text-container">
+                    <h2 class="feature-header">Analytics & Insights</h2>
+                    <p class="feature-text" id="analytics-and-insights-text">Gain a holistic view into your customers' buying behavior & purchasing patterns.</p>
+                </div>
+            </div>
+
+            <div id="fraud-protection-feature" class="feature">
+                <img class="feature-img" src="img/chain_img.png" alt="Chain" width="100" height="100">
+                <div class="feature-text-container">
+                    <h2 class="feature-header">Fraud Protection</h2>
+                    <p class="feature-text" id="fraud-protection-text">Budss handles all payments with a fraud prevention algorithm to flag high risk purchases & a user set PIN code to keep payment info secure.</p>
+                </div>
+            </div>
+        </div>
+
+        <img class="second-block-img" src="img/second_block_img.png" alt="Budss alternative logo" width="423" height="489" id="second-block-img">
+    </div>
+
+    <div class="blank-space"></div>
+
+    <div class="container animated-bg-container">
+        <div class="animated-bg">
+            <div class="animated-bg-text-block animation-top-block">
+                <p class="animated-bg-text upper-text">How Budss works</p><p class="animated-bg-text gray-text">How budss works</p><p class="animated-bg-text upper-text">How Budss works</p>
+            </div>
+            <div class="animated-bg-text-block animation-center-block">
+                <p class="animated-bg-text gray-text">How budss works</p><p class="animated-bg-text center-text">How Budss works</p><p class="animated-bg-text gray-text">How budss works</p>
+            </div>
+            <div class="animated-bg-text-block animation-bottom-block">
+                <p class="animated-bg-text lower-text">How Budss works</p><p class="animated-bg-text gray-text">How budss works</p><p class="animated-bg-text lower-text">How Budss works</p>
+            </div>
+        </div>
+        <img class="smartphone-img" src="img/smartphone_img.png" alt="Smartphone">
+    </div>
+
+    <div class="blank-space"></div>
+
+    <div class="container bottom-section-container">
+        <div class="percentage-block-container">
+            <div class="percentage-block">
+                <p class="percentage-header">15%</p>
+                <p class="percentage-text">
+                    Increase in Purchase Amount
+                </p>
+            </div>
+            <div class="percentage-block">
+                <p class="percentage-header">30%</p>
+                <p class="percentage-text">
+                    Growth in Annual Sales
+                </p>
+            </div>
+            <div class="percentage-block">
+                <p class="percentage-header">10%</p>
+                <p class="percentage-text">
+                    Growth in New Customers
+                </p>
+            </div>
+        </div>
+
+        <div class="why-budss-container">
+            <div class="why-budss-content-block why-budss-text-block">
+                <img class="why-budss-purple-bg" src="img/purple_background_img.png" alt="Purple BG for text" width="387" height="46">
+                <h3 class="percentage-header why-budss-aligner">Why Budss</h3>
+                <p class="why-budss-text">We Provide Advanced Payment Solutions To Grow Your Business</p>
+            </div>
+
+            <div class="container white-textboxes-top-container">
+                <div class="white-textboxes-container">
+                    <div class="white-textbox big-white-textbox" id="first-white-tb">
+                        <img src="img/first_whitebox_img.png" alt="Smartphone" class="first-wb-img">
+                        <div class="white-tb-text-block" id="first-white-tb-text">
+                            <h3 class="wb-header" id="first-wb-header">Turn your customers into loyal influencers</h3>
+                            <p class="wb-text" id="first-wb-text">Budss helps businesses harness the exponential power of loyal customers for acquisition and retention.</p>
+                        </div>
+                    </div>
+                    <div class="white-textbox small-white-textbox" id="second-white-tb">
+                        <img src="img/cyan_bag_img.png" alt="Cyan bag" class="bag-img cyan-bag">
+                        <img src="img/orange_bag_img.png" alt="Orange bag" class="bag-img orange-bag">
+                        <img src="img/purple_bag_img.png" alt="Purple bag" class="bag-img purple-bag">
+                        <div class="white-tb-text-block" id="second-white-tb-text">
+                            <h3 class="wb-header" id="second-wb-header">Harness the power of buying in bulk</h3>
+                            <p class="wb-text" id="second-wb-text">Get at least 2X more sales with Budss Buying Groups. Your customer base will grow exponentially as your customers add their friends & family to your personalized group.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="white-textboxes-container">
+                    <div class="white-textbox small-white-textbox" id="third-white-tb">
+                        <img src="img/third_whitebox_img.png" alt="Like" class="third-wb-img">
+                        <div class="white-tb-text-block" id="third-white-tb-text">
+                            <h3 class="wb-header" id="third-wb-header">Supercharge Loyalty With Instant Cash Back</h3>
+                            <p class="wb-text" id="third-wb-text">Budss allows for shoppers to earn immediate cash back at their favorite stores.</p>
+                        </div>
+                    </div>
+                    <div class="white-textbox big-white-textbox" id="fourth-white-tb">
+                        <img src="img/fourth_whitebox_img.png" alt="Purple guy" class="fourth-wb-img">
+                        <div class="white-tb-text-block" id="fourth-white-tb-text">
+                            <h3 class="wb-header" id="fourth-wb-header">Seasoned with AI and Gamification</h3>
+                            <p class="wb-text" id="fourth-wb-text">AI programming creates a personalized customer journey, offering recommendations for their next purchase and optimizing rewards for after purchase.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="pre-footer-block">
+            <div class="let-your-business-grow-outer-block">
+                <div class="let-your-business-grow-inner-block">
+                    <h3 class="percentage-header" id="lybg-header">Let Your Business Grow</h3>
+                    <button class="contact-sales-button contact-sales-button-light" id="pre-footer-contact-sales-button" onclick="button_click(true)">Contact sales</button>
+                </div>
+            </div>
+
+            <div class="pre-footer-center-block">
+                <div class="pre-footer-text-block">
+                    <h3 class="pre-footer-text-header">Your Brand Awareness Maters</h3>
+                    <p class="wb-text" id="ybam-text">Budss is a husle free solution to put your brand on any digital surface including Instagram, Facebook, Twitter and TikTok</p>
+                </div>
+                <img src="img/facebook_icon.png" alt="Facebook" class="social-network-upper-icon facebook-icon">
+                <img src="img/twitter_icon.png" alt="Twitter" class="social-network-lower-icon twitter-icon">
+                <img src="img/instagram_icon.png" alt="Instagram" class="social-network-upper-icon instagram-icon">
+                <img src="img/tiktok_icon.png" alt="Tik-Tok" class="social-network-lower-icon tiktok-icon">
+            </div>
+
+            <!-- В мобильной версии на Figma площадки Woo Commerce и Square "поменялись местами", если сравнивать с ПК-версией макета страницы -->
+            <div class="pre-footer-last-block">
+                <div class="footer-icons-div">
+                    <img src="img/woo_commerce.png" class="woo-commerce" alt="Woo Commerce" width="126" height="60">
+                    <img src="img/shopify.png" class="shopify" alt="Shopify" width="209" height="60">
+                </div>
+                <div class="footer-icons-div">
+                    <img src="img/square.png" class="square" alt="Square" width="182" height="48">
+                    <img src="img/squarespace.png" class="squarespace" alt="Squarespace" width="277" height="40">
+                </div>
+                <img src="img/clover.png" class="clover" alt="Clover" width="184" height="46">
+            </div>
+        </div>
+
+    </div>
+
+    <footer class="footer-block" id="footer-block">
+        <div class="footer-outer-block">
+            <div class="footer-upper-block" id="footer-upper-block">
+                <img src="img/budss_logo_img.png" id="logo" class="footer-logo" alt="Budss_logo">
+                <div class="fb-fc-links-block" id="footer-buttons-block">
+                    <a href="" class="mobile-footer-link fb-fc-links fb-link" id="moveable-link-0">For Business</a>
+                    <a href="" class="mobile-footer-link fb-fc-links fc-link" id="moveable-link-1">For Customers</a>
+                </div>
+                <div class="footer-buttons" id="footer-buttons-mobile">
+                    <button class="contact-sales-footer contact-sales-button" id="footer-contact-sales-button" onclick="button_click(true)">Contact sales</button>
+                    <div class="app-store-and-google-play-buttons" id="footer-as-gp-buttons">
+                        <img src="img/appstore.png" alt="App Store" class="app-store mobile-store-button">
+                        <img src="img/googleplay.png" alt="Google Play" class="google-play mobile-store-button">
+                    </div>
+                </div>
+            </div>
+            <div class="footer-lower-block" id="footer-lower-block">
+                <p class="copyright-font copyright-text">© Copyright 2023, All Rights Reserved by Budss</p>
+                <div class="footer-links-block" id="footer-links-block">
+                    <a href="" class="mobile-footer-link copyright-font footer-link" id="moveable-link-2">Privacy Policy</a>
+                    <a href="" class="mobile-footer-link copyright-font footer-link" id="moveable-link-3">Terms Of Use - Seller</a>
+                    <a href="" class="mobile-footer-link copyright-font footer-link" id="moveable-link-4">Terms of Use - Sellers & Customers</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+    <script src="js/buttons.js"></script>
+    <script src="js/form.js"></script>
+</body>
+</html>
